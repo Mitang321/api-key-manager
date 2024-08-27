@@ -8,7 +8,7 @@ function KeyForm({ addKey }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (apiKey && category) {
-      addKey({ apiKey, category });
+      addKey({ apiKey, category, usageCount: 0 });
       setApiKey("");
       setCategory("");
     }

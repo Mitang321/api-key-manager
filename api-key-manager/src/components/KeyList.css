@@ -1,10 +1,35 @@
 .key-list {
   list-style: none;
   padding: 0;
+  margin: 20px 0;
 }
 
 .key-item {
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
-  text-align: left;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.key-item strong {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.log-button {
+  padding: 8px 15px;
+  font-size: 14px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.log-button:hover {
+  background-color: #218838;
 }
