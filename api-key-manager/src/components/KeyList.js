@@ -1,32 +1,50 @@
-import React from "react";
+import React, { useState } from "react";
 import "./KeyList.css";
 
-function KeyList({ keys, filter, logUsage }) {
-  const filteredKeys = keys
-    .filter(
-      (key) =>
-        key.category.includes(filter.category) &&
-        (!filter.search || key.apiKey.includes(filter.search))
-    )
-    .filter((key) => !key.expiryDate || new Date(key.expiryDate) >= new Date());
+function KeyList({ keys, logUsage, editKey, deleteKey }) {
+  const [revealedKeys, setRevealedKeys] = useState({});
+
+  const handleReveal = (index) => {
+    setRevealedKeys({
+      ...revealedKeys,
+      [index]: !revealedKeys[index],
+    });
+  };
+
+  const handleEdit = (index) => {
+    const newKey = prompt("Edit API Key:", keys[index].apiKey);
+    const newCategory = prompt("Edit Category:", keys[index].category);
+    if (newKey && newCategory) {
+      editKey(index, { apiKey: newKey, category: newCategory });
+    }
+  };
+
+  const handleDelete = (index) => {
+    if (window.confirm("Are you sure you want to delete this API key?")) {
+      deleteKey(index);
+    }
+  };
 
   return (
     <ul className="key-list">
-      {filteredKeys.length > 0 ? (
-        filteredKeys.map((key, index) => (
-          <li key={index} className="key-item">
-            <strong>{key.apiKey}</strong> (Category: {key.category})<br />
-            Usage Count: {key.usageCount}
-            <br />
-            Expiry Date: {key.expiryDate || "N/A"}
-            <button onClick={() => logUsage(index)} className="log-button">
-              Log Usage
-            </button>
-          </li>
-        ))
-      ) : (
-        <li className="key-item">No keys found for this filter.</li>
-      )}
+      {keys.map((key, index) => (
+        <li key={index} className="key-item">
+          <strong>{key.category}</strong>
+          <span onClick={() => handleReveal(index)} className="key-text">
+            {revealedKeys[index] ? key.apiKey : "****-****-****-****"}
+          </span>
+          <span className="key-usage">Usage: {key.usageCount}</span>
+          <button className="log-button" onClick={() => logUsage(index)}>
+            Log Usage
+          </button>
+          <button className="edit-button" onClick={() => handleEdit(index)}>
+            Edit
+          </button>
+          <button className="delete-button" onClick={() => handleDelete(index)}>
+            Delete
+          </button>
+        </li>
+      ))}
     </ul>
   );
 }
