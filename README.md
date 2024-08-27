@@ -4,7 +4,7 @@ API Key Manager is a efficient tool for managing API keys. It allows users to ad
 
 ## Live Preview
 
-[Live Preview](https://vercel.app/)
+[Live Preview](https://api-key-manager.vercel.app/)
 
 ## Features
 
