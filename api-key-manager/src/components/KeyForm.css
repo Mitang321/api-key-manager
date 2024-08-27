@@ -1,0 +1,26 @@
+.key-form {
+  margin-bottom: 20px;
+}
+
+.key-input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: calc(50% - 120px);
+  margin-right: 10px;
+}
+
+.key-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.key-button:hover {
+  background-color: #0056b3;
+}

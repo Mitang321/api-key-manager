@@ -1,0 +1,10 @@
+.key-list {
+  list-style: none;
+  padding: 0;
+}
+
+.key-item {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
